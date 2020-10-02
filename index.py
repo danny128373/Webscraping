@@ -23,3 +23,19 @@ soup = BeautifulSoup(res.text, "lxml")
 table_of_contents_list = soup.select('.toctext')
 for _ in table_of_contents_list:
     print(_.getText())
+
+# scraping an image
+res = requests.get('https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)')
+soup = BeautifulSoup(res.text, 'lxml')
+computer = soup.select('.thumbimage')[0]['src']
+print(computer)
+
+# image_link is assigned full path of computer image
+
+image_link = requests.get(f'https:{computer}')
+
+# creating a jpg file to put computer image content
+f = open('computer_image.jpg', 'wb')
+# image_link.content is the binary representation of the computer image
+f.write(image_link.content)
+f.close()
