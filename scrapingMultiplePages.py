@@ -18,7 +18,7 @@ example = products[0]
 # Selects anything with the class star-rating Three
 rating_container = example.select('.star-rating.Three')
 
-
+# Code for goal
 two_star_titles = []
 for page in range(1, 51):
     scrape_url = base_url.format(page)
